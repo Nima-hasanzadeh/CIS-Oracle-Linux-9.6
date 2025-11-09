@@ -1,0 +1,48 @@
+#!/bin/bash
+
+clear
+echo -e "\e[91m"
+cat <<EOF
+
+
+
+
+ ██████╗  ██████╗ ████████╗██╗███╗   ██╗    ███████╗███████╗ ██████╗██╗   ██╗██████╗ ██╗████████╗██╗   ██╗
+ ██╔══██╗██╔═══██╗╚══██╔══╝██║████╗  ██║    ██╔════╝██╔════╝██╔════╝██║   ██║██╔══██╗██║╚══██╔══╝╚██╗ ██╔╝
+ ██║  ██║██║   ██║   ██║   ██║██╔██╗ ██║    ███████╗█████╗  ██║     ██║   ██║██████╔╝██║   ██║    ╚████╔╝
+ ██║  ██║██║   ██║   ██║   ██║██║╚██╗██║    ╚════██║██╔══╝  ██║     ██║   ██║██╔══██╗██║   ██║     ╚██╔╝
+ ██████╔╝╚██████╔╝   ██║   ██║██║ ╚████║    ███████║███████╗╚██████╗╚██████╔╝██║  ██║██║   ██║      ██║
+ ╚═════╝  ╚═════╝    ╚═╝   ╚═╝╚═╝  ╚═══╝    ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝
+ For Oracle Linux 9
+
+EOF
+echo -e "\e[49m"
+. /etc/os-release
+echo -e "You are running \e[43m\e[34m${PRETTY_NAME}\e[0m\n"
+
+
+
+if ! [ -x "$(command -v systemctl)" ]; then
+  echo "This script requires systemctl ."
+  kill $$
+fi
+
+chmod +rx ./Caliper.bash
+chmod +rx ./Pliers.bash
+
+echo "Select an option:"
+echo "1. Auditing by Caliper"
+echo "2. Hardening by Pliers"
+read choice
+
+case $choice in
+  1)
+    ./Caliper.bash
+    ;;
+  2)
+    ./Pliers.bash
+    ;;
+  *)
+    echo "Invalid choice"
+    ;;
+esac
