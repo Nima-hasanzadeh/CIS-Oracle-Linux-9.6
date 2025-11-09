@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Program: Pliers V0.2
+#Program: Pliers V1.0
 #Author: Nima.H 
 #July 2025 
 #Description: This script is for Hardening Oracle Linux 9 based on CIS benchmark.
